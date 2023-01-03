@@ -68,15 +68,14 @@ public class PersonalService : IPersonalService
     {
         try
         {
-            
-            var personals = _personalRepository.Get().Skip((parameters.page) * parameters.size)
-                .Take(parameters.size).ToList();
+            var personals = _personalRepository.Get().Where(p=>!p.IsDeleted).ToList();
             return new ServiceResponse<PageResponse<PersonalDTO>>()
             {
                 data = new PageResponse<PersonalDTO>()
                 {
-                    data = personals.Select(p=>_mapper.Map<PersonalDTO>(p)).ToList(),
-                    totalItems = 20
+                    data = personals.Skip((parameters.page) * parameters.size)
+                        .Take(parameters.size).Select(p=>_mapper.Map<PersonalDTO>(p)).ToList(),
+                    totalItems = personals.Count
                 },
                 message = "success",
                 status = true

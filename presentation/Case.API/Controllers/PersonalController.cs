@@ -36,7 +36,7 @@ public class PersonalController:BaseController
     {
         return await _personalService.UpdatePersonal(model);
     }
-    [HttpDelete("{id:int}")]
+    [HttpDelete("{id}")]
     public async Task<ServiceResponse<bool>> DeletePersonal(string id)
     {
         return await _personalService.DeletePersonal(id);

@@ -1,3 +1,5 @@
+using System.ComponentModel.DataAnnotations;
+
 namespace Case.Domain.DTO;
 
 public class PersonalDTO

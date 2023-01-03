@@ -11,7 +11,7 @@ public abstract class BaseEntity
     [BsonRepresentation(BsonType.ObjectId)]
     [BsonId]
     [BsonElement(Order = 0)]
-    public virtual string Id { get; } = ObjectId.GenerateNewId().ToString();
+    public virtual string Id { get; set; } = ObjectId.GenerateNewId().ToString();
 
     [BsonRepresentation(BsonType.DateTime)]
     [BsonDateTimeOptions(Kind = DateTimeKind.Utc)]
